@@ -32,7 +32,11 @@ export class AuthService {
     const valid = await bcrypt.compare(password, admin.password);
     if (!valid) throw new UnauthorizedException('Invalid credentials');
 
-    return this.jwtService.sign({ id: admin.id, role: 'admin' });
+    return this.jwtService.sign({
+      id: admin.id,
+      email: admin.email,
+      role: 'admin',
+    });
   }
 
   async sendOtp(email: string) {
@@ -81,6 +85,10 @@ export class AuthService {
       .set({ otpCode: null, otpExpiresAt: null })
       .where(eq(users.email, email));
 
-    return this.jwtService.sign({ id: user.id, role: 'user' });
+    return this.jwtService.sign({
+      id: user.id,
+      email: user.email,
+      role: 'user',
+    });
   }
 }
