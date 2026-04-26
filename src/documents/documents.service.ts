@@ -25,7 +25,7 @@ export class DocumentsService {
               folder: 'drive-clone',
             },
             (error, result) => {
-              if (error) reject(error);
+              if (error) reject(new Error(error.message));
               else resolve(result as { secure_url: string; public_id: string });
             },
           )

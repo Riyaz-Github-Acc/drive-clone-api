@@ -9,7 +9,6 @@
     "target": "ES2023",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
@@ -17,36 +16,43 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
+    "types": [
+      "node",
+      "multer"
+    ],
     "paths": {
       "@app/config": [
-        "libs/config/src"
+        "./libs/config/src"
       ],
       "@app/config/*": [
-        "libs/config/src/*"
+        "./libs/config/src/*"
       ],
       "@app/drizzle": [
-        "libs/drizzle/src"
+        "./libs/drizzle/src"
       ],
       "@app/drizzle/*": [
-        "libs/drizzle/src/*"
+        "./libs/drizzle/src/*"
       ],
       "@app/dto": [
-        "libs/dto/src"
+        "./libs/dto/src"
       ],
       "@app/dto/*": [
-        "libs/dto/src/*"
+        "./libs/dto/src/*"
       ],
       "@app/guards": [
-        "libs/guards/src"
+        "./libs/guards/src"
       ],
       "@app/guards/*": [
-        "libs/guards/src/*"
+        "./libs/guards/src/*"
       ],
       "@app/types": [
-        "libs/types/src"
+        "./libs/types/src"
       ],
       "@app/types/*": [
-        "libs/types/src/*"
+        "./libs/types/src/*"
+      ],
+      "libs/*": [
+        "./libs/*"
       ]
     }
   }
