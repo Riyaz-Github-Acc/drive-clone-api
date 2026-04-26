@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 
 export const admins = pgTable('admins', {
   id: uuid().primaryKey().defaultRandom(),
@@ -28,4 +28,17 @@ export const documents = pgTable('documents', {
   updatedAt: timestamp('updated_at')
     .defaultNow()
     .$onUpdate(() => new Date()),
+});
+
+export const sections = pgTable('sections', {
+  id: uuid().primaryKey().defaultRandom(),
+  documentId: uuid('document_id')
+    .notNull()
+    .references(() => documents.id, { onDelete: 'cascade' }),
+  type: text('type', {
+    enum: ['heading', 'subheading', 'body', 'image'],
+  }).notNull(),
+  content: text('content').notNull(),
+  order: integer('order').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
 });

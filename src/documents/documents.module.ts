@@ -4,6 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 
 import { DocumentsController } from './documents.controller';
 import { DocumentsService } from './documents.service';
+import { ParserService } from './parser.service';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { DocumentsService } from './documents.service';
     }),
   ],
   controllers: [DocumentsController],
-  providers: [DocumentsService],
+  providers: [DocumentsService, ParserService],
 })
 export class DocumentsModule {}
